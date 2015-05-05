@@ -1,0 +1,84 @@
+{% extends 'MainBundle::layout.html.twig' %}
+
+{% block title %}
+Manage Schedule | UCB Dandelion
+{% endblock %}
+
+{% block modulestylesheets %}
+<link href="{{ asset('bundles/main/css/schedule.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block modulejavascripts %}
+<script>
+	schedule_delete_url = "{{ path('schedule_delete') }}";
+</script>
+<script src="{{ asset('bundles/main/js/schedule.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+	<section id="panel">
+		<div class="panel schedule_list_form">
+			<div class="panel-form-first-part">
+				<a href="{{ path('logout') }}" id="logout">Log out</a>
+				<h1 class="panel-title-form"><b>Remote Patient Education Management</b></h1>
+			</div>
+			<div class="row schedule_list_first">
+				<div class="col-xs-12">
+					<b>Dr {{ app.user.getUsername() }}</b>
+				</div>  
+				<div class="col-xs-12"> 
+					<b>Phone#:</b> {{ app.user.getProfessionalPhone() }}
+				</div> 
+				<div class="col-xs-12"> 
+					<b>Email:</b> {{ app.user.getEmail() }}                   
+				</div>
+			</div>
+			<div class="row button-group text-center">
+				<a href="{{ ucb_patient_action }}" title="GO TO REMOTE PRESENTATON PLATFORM" target="_blank">
+					<button class="btn btn-primary button-text" type="button">GO TO REMOTE PRESENTATON PLATFORM</button>
+				</a>
+			</div>
+			<hr>
+			<div class="panel-form-second-part">
+				<h3><b>Patient Education Sessions Manager</b></h3>
+			</div>
+			<div class="scrollable-menu">
+				{% for schedule in schedules %}
+					<div class="row">
+						<div class="col-xs-6 col-md-4">
+							<span class="col-md-3 form-control input-sm">
+								{{ schedule.firstname }} {{ schedule.lastname }}
+							</span>
+							<span class="col-md-3 form-control input-sm">
+								{{schedule.title|length > 14 ? schedule.title|slice(0, 12) ~ '...' : schedule.title }}
+							</span>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<span class="col-md-3 form-control input-sm"> {{ schedule.phone }}</span>
+							<span class="col-md-3 form-control input-sm">{{schedule.email|length > 14 ? schedule.email|slice(0, 12) ~ '..' : schedule.email }}</span>
+						</div>
+						<div class="col-xs-6 col-md-4">
+	                        <span class="col-md-3 form-control input-sm">{{schedule.scheduledatetime|date("m/d/Y H:ia")}}</span>
+	                        <span class="col-md-3 form-control input-sm">{{ schedule.status }}</span>
+	                    </div>
+						<div class="col-xs-6 col-md-1">
+							<a href="{{ path('schedule_edit', {'id':schedule.id}) }}" title='Edit'>
+								<button type="button" class="btn btn-default btn-sm editschedule">
+									<img alt='Edit' class='editschedule' src='{{ asset('bundles/main/images/icon_pen.png') }}'/> 
+								</button>
+							</a>
+							<button type="button" class="btn btn-danger btn-sm btn_delete_schedule" id="{{schedule.id}}" title='Delete' onclick="deleteSchedule('{{ schedule.id }}')">
+								<img class='btn_delete_schedule' alt='delete' src='{{ asset('bundles/main/images/icon_remove.png') }}' /> 
+							</button>
+						</div>
+					</div>
+				{% else %}
+					 <div class="row">               
+						<div class="col-xs-12">No Data Found</div>
+					 </div>  
+				{% endfor %}
+			</div>	
+		</div>
+	</section>
+{% endblock %}
+   

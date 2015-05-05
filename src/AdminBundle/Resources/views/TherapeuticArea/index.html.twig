@@ -1,0 +1,151 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+Therapeutical Area and MSL | Dandelion
+{% endblock %}
+
+{% block modulestylesheets %}
+<link href="{{ asset('bundles/admin/css/therapeutic_area.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block modulejavascripts %}
+<script>
+	therapeutic_area_add_url 	  = "{{ path('therapeutic_area_add') }}";
+	therapeutic_area_edit_url  	  = "{{ path('therapeutic_area_edit') }}";
+	msl_add_url 			  	  = "{{ path('msl_add') }}";
+	msl_edit_url 			  	  = "{{ path('msl_edit') }}";
+	msl_get_url				  	  = "{{ path('msl_get') }}";
+	msl_delete_get_url			  = "{{ path('msl_delete') }}";
+	therapeutic_area_list_url	  = "{{ path('therapeutic_area_list') }}";
+	msl_list_url	  			  = "{{ path('msl_list') }}";
+</script>
+<script src="{{ asset('bundles/admin/js/therapeutic_area_msl.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-sm-4">
+			<form name="frm_therapeutic_area" id="frm_therapeutic_area" method="post" role="form" action="{{ path('therapeutic_area_add') }}">
+				<div class="row">
+					<div class="col-sm-12 header-bg-text">
+						<div class="col-sm-2 padding-top-7px">
+							<span><i class="fa fa-th-list fa-3x icon-white-color"></i></span>
+						</div>
+						<div class="col-sm-8 margin-sm10">
+							<div class="first-text-header">Therapeutical Areas</div>
+							<div class="second-text-header">add and update</div>
+						</div>
+					</div>
+					<div class="row-gap"></div>
+					<div class="row">
+						<div class="col-xs-9 padding-right-0px">
+							<input type="type" name="txt_therapeutic_area" id="txt_therapeutic_area" value="" class="form-control input-lg" placeholder="New Here" maxlength="32">
+						</div>
+						<div class="col-xs-3">
+							<div class="button-group text-right" title="ADD" id="therapeutic_area_add">
+								<button type="button" name="btn_therapeutic_area" id="btn_therapeutic_area" class="btn btn-primary btn-lg common-button width-100-per">+</button>
+							</div>
+						</div>
+					</div>
+					<div class="row-gap"></div>
+					<div class="background-color-white" id="therapeutic_area_list_div">
+						<table class="table table-striped">
+							<tbody id="table_therapeutic_area_list" class=""></tbody>
+						</table>
+					</div>	
+				</div>
+			</form>	
+		</div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-7">
+			<form name="frm_msl" id="frm_msl" method="post" action="{{ path('msl_add') }}" role="form">
+				<div class="row">
+					<div class="col-sm-12 header-bg-text">
+						<div class="col-sm-1 padding-top-7px">
+							<span><i class="fa fa-user fa-3x icon-white-color"></i></span>
+						</div>
+						<div class="col-sm-11">
+							<div class="first-text-header">Users</div>
+							<div class="second-text-header">add, update and delete</div>
+						</div>
+					</div>
+					<div class="row-gap"></div>
+					<div class="row">
+						<div class="col-xs-11 col-md-3 padding-right-0px">	
+							<input type="text" name="txt_first_name" id="txt_first_name" value="" class="form-control input-lg" placeholder="First Name" maxlength="32">
+						</div>
+						<div class="col-xs-11 col-md-3 padding-right-0px">
+							<input type="text" name="txt_last_name" id="txt_last_name" value="" class="form-control input-lg" placeholder="Last Name" maxlength="32">
+						</div>
+						<div class="col-xs-11 col-md-4 padding-right-0px">
+							<input type="text" name="txt_email" id="txt_email" value="" class="form-control input-lg" placeholder="Email" maxlength="32">
+						</div>
+						<div class="col-xs-2 col-md-2">
+							<div class="button-group text-right" title="ADD" id="msl_add">
+								<button type="button" name="btn_msl" id="btn_msl" class="btn btn-primary btn-lg common-button width-100-per">+</button>
+							</div>
+						</div>
+					</div>
+					<div class="row-gap"></div>
+					<div class="background-color-white" id="msl_list_div">
+						<table class="table table-striped">
+							<tbody id="table_msl_list"></tbody>
+						</table>
+					</div>
+				</div>
+			</form>	
+		</div>
+	</div>
+
+	<!-- therapeutic area edit popup -->
+	<div class="modal fade bs-example-modal-sm" id="popupEditTherapeuticArea" tabindex="-1" role="dialog" aria-labelledby="popupEditTherapeuticAreaLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title modal-title-header" id="popupEditTherapeuticAreaLabel">Edit Therapeutic Area</h4>
+				</div>
+				<div class="modal-body"> 
+					<div class="edit-therapeutic-area-alert-msg hide">
+						<div class="alert alert-warning modal-body-label">
+							<a aria-hidden="true" data-dismiss="alert" href="#" class="close"></a>
+							<span class="response edit-therapeutic-area-response-msg"></span>
+						</div>
+					</div>
+					<form name="frm_edit_therapeutic_area" id="frm_edit_therapeutic_area" method="post" action="{{ path('therapeutic_area_edit') }}" role="form">
+						<input type="type" name="txt_edit_therapeutic_area" id="txt_edit_therapeutic_area" value="" class="form-control input-lg" placeholder="Enter therapeutic area here" maxlength="32">
+						<input type="hidden" name="hid_therapeutic_area_id" id="hid_therapeutic_area_id" value="">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-standard btn_edit_therapeutic_area save-button" title="Save">Save</button>
+					<button type="button" class="btn btn-standard close-button" data-dismiss="modal" title="Close">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- msl edit popup -->
+	<div class="modal fade bs-example-modal-lg" id="popupEditMsl" tabindex="-1" role="dialog" aria-labelledby="popupEditMslLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title modal-title-header" id="popupEditMslLabel">Update an User</h4>
+				</div>
+				<div class="modal-body"> 
+					<div class="edit-msl-alert-msg hide">
+						<div class="alert alert-warning modal-body-label">
+							<a aria-hidden="true" data-dismiss="alert" href="#" class="close"></a>
+							<span class="response edit-msl-response-msg"></span>
+						</div>
+					</div>
+					<div id="msl_form_edit_div"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-standard btn_delete_msl delete-button" title="Delete Msl">Delete User</button>
+					<button type="button" class="btn btn-standard btn_save_msl save-button" title="Save Msl">Save User</button>
+					<button type="button" class="btn btn-standard close-button" data-dismiss="modal" title="Close">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,228 @@
+@import "./variables-custom";
+@import "../assets/stylesheets/bootstrap";
+
+/* Global */
+h1, .h1, h2, .h2, h3, .h3 {
+	margin-top: 14px;
+}
+
+h3 {
+	font-size: 18px;
+	font-weight: 300;
+}
+a {font-weight: normal;}
+strong {font-weight: 500;}
+button {
+		text-transform: uppercase;
+	}
+.btn {border-radius: 4px;}
+
+body {
+	background: url('../assets/images/background.jpg') #c3e565 no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-size: 100%;
+    font-weight: 100; 
+	
+	.container {
+		padding-top: 80px;
+	} 
+
+	header {
+		height: 51px;
+		margin-bottom: 27px;
+		
+		a { 
+			float: right; 
+		}
+	}
+	
+	#panel .panel {
+		padding: 0 55px 20px 55px;
+		background-image: url('../assets/images/background-panel-from-heading.jpg');
+		background-color: rgba(255,255,255,0.9); 
+		background-repeat: no-repeat;
+		background-position: -1px -1px;
+		margin-bottom: 50px;
+		border-radius: 9px;
+	
+		h1.panel-title-form {
+			font-size: 19px;
+			line-height: 22px;
+			font-weight: 100;
+			color: #FFF;
+			
+			&.title-login {
+				font-size: 35px;
+				margin-bottom: 27px;
+				text-transform: uppercase;
+			}
+		}
+		.panel-form-first-part {
+			padding: 20px 0 43px 0;
+			
+			.btn-lg {
+				font-size: 15px;
+				padding-left: 22px;
+				padding-right: 22px;
+			}
+		}
+		.panel-form-second-part {
+			margin-bottom: 30px;
+			
+			.title-login {
+				font-weight: 100;
+				font-size: 24px;
+				margin-bottom: 25px;
+				margin-top: 0px;
+			}
+			
+			p {
+				font-size: 17px;
+				font-weight: 300;
+			}
+			
+			.block-button {
+				background: $brand-info;
+				padding: 20px;
+				color: #fff;
+				border-radius: 4px;
+				margin-top: 20px;
+				height: 100px;
+			}
+		}
+		 
+		form {
+			
+			.form-group {
+				margin-bottom: 20px;
+				
+				.radio, .checkbox {
+					margin-top: 0px;
+					margin-bottom: 0px;
+				}
+				select option [selected] {
+					background: red;
+				}
+				
+				.group-date {
+					padding-right: 0px;
+				}	
+							
+				.group-checkbox {
+				background: #fff; 
+				padding: 5px 10px 5px 10px;
+				height: 75px;
+				overflow: scroll;
+				border: 1px solid $gray-light;
+				height: 91px;
+					
+					label {
+						font-size: 14px;
+						line-height: 19px;
+						padding-bottom: 1px;
+					}
+				}
+				
+				label {
+					font-size: 17px;
+					font-weight: 300;
+					padding-bottom: 5px; 
+					
+					&.radio-inline {
+						line-height: 21px;
+						font-size: 14px;
+					}
+				}
+				.input-group-addon {
+					background: #fff;
+					border-left: 1px solid $gray-light;
+					border-top: 1px solid $gray-light;
+					border-bottom: 1px solid $gray-light;	
+				}
+				
+				.form-control {
+					border: 1px solid $gray-light;
+					border-radius: 0px;
+					
+					option {
+						font-size: 14px;
+					}
+				}
+			}
+			
+			.button-group {
+				margin-bottom: 20px;
+				
+				.btn-lg {
+					padding: 10px 25px;
+					font-size: 18px;
+				}
+			}
+			
+			p.policy {
+				font-size: 12px;
+				font-weight: 300;
+				line-height: 15px;
+				margin-bottom: 20px;
+				color: $gray-medium;
+			}
+		}
+	}
+	
+	.footer {
+		margin-bottom: 20px;
+		
+		a {
+			font-size: 12px;
+		}
+	} 
+}
+body.confirmation {
+		 
+	#panel .panel {
+		background-position: -1px -16px;
+		
+		h1.panel-title-form {
+			font-size: 22px;
+			line-height: 25px;
+		}
+		
+		.panel-first-part {
+			padding: 20px 0 28px 0;
+		}
+		
+		.panel-second-part {
+			
+			h2 {
+				font-size: 24px;
+			}
+			
+			p {
+				padding-bottom: 10px;
+			}
+		}
+	}
+	
+	
+}
+
+
+
+
+
+
+/* Option page */
+
+
+/* Login */
+body.login {
+	h1.title-login {font-size: 27px !important; text-transform: uppercase;}
+}
+
+/* Confirmation */
+body.confirmation {
+	h1.title-confirmation {font-size: 20px !important;}
+}

@@ -1,0 +1,59 @@
+{% extends 'MainBundle::layout.html.twig' %}
+
+{% block title %}
+Remote Patient | UCB Dandelion
+{% endblock %}
+
+{% block content %}
+    <section id="panel">
+        <div class="panel">
+            <div class="panel-form-first-part">
+                <a href="{{ path('logout') }}" id="logout">Log out</a>
+                <h1 class="panel-title-form">Welcome back to your personal<br /> Dandelion Space, <b>Dr. {{ app.user.getUsername()|capitalize }} </b></h1>
+            </div>
+            <nav class="panel-form-second-part">
+                <h2 class="title-option"><b>Remote Patient</b></h2>
+                <h3>Education organizer</h3>
+                <a href="{{ path('schedule_new') }}" title="Create new session with patient">
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_folder.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                I need to set a <b>new patient education session</b> with one of my patients
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ path('schedule_list') }}" title="Manage scheduled sessions">
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_calendar.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+                                I need to <b>manage</b> a patient education sessions I have scheduled
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ ucb_patient_action }}" title="UCB Patients" target='_blank'>
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_play.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+                                I am hosting a 1:1 patient education session <b>now</b>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </nav>
+            <div class="row footer">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><a href="https://visit.ucbdandelion.com/custom/img/150112_Legal%20Policy_UCBDandelion.pdf" title="Privacy Policy" target="_blank">Privacy Policy</a></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

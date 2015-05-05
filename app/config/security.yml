@@ -1,0 +1,83 @@
+# you can read more about security in the related section of the documentation
+# http://symfony.com/doc/current/book/security.html
+security:
+    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Cegedim\Bundle\OwaCasBundle\Security\User\OwaUser: sha512
+        AdminBundle\Entity\User:
+            algorithm: sha512
+            encode_as_base64: false
+            iterations: 1
+
+    # http://symfony.com/doc/current/book/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        admin:
+            id: admin.security.user.admin_user_provider
+        #in_memory:
+        #    memory:
+        #        users:
+        #            user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+        #            admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        owa:
+            id: cas.security.user.owa_user_provider
+
+    # the main part of the security, where you can set up firewalls
+    # for specific sections of your app
+    firewalls:
+        admin_secured_area:
+            pattern:    ^/admin
+            anonymous: true
+            provider: admin
+            form_login: 
+                check_path: _security_check
+                login_path: _security_login
+                default_target_path: therapeutic_area_user
+            logout:
+                path: _security_logout
+                success_handler: admin.security.logout_success_handler
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        secured_area:
+            provider: owa
+            pattern:    ^/
+            anonymous: true
+            logout:     
+                success_handler: security.logout.success_handler
+            cas:
+                #cas_server: %cas_server%
+                #cas_port: %cas_port%
+                #cas_path: %cas_path%
+                #ca_cert_path: ~
+                #cas_protocol: S1
+                cas_logout: homepage
+                cas_mapping_attribute: name
+                check_path: login_check
+                login_path: login
+
+    # with these settings you can restrict or allow access for different parts
+    # of your application based on roles, ip, host or methods
+    # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
+    access_control:
+        - { path: option, roles: ROLE_USER }
+        - { path: remote_patient_option, roles: ROLE_USER }
+        - { path: schedule, roles: ROLE_USER }
+        - { path: confirm, roles: ROLE_USER }
+        - { path: invitation, roles: ROLE_USER }
+        - { path: msl, roles: ROLE_ADMIN }
+        - { path: msl_add, roles: ROLE_ADMIN }
+        - { path: msl_edit, roles: ROLE_ADMIN }
+        - { path: msl_list, roles: ROLE_ADMIN }
+        - { path: msl_get, roles: ROLE_ADMIN }
+        - { path: msl_delete, roles: ROLE_ADMIN }
+        - { path: therapeutic_area_user, roles: ROLE_ADMIN }
+        - { path: therapeutic_area_add, roles: ROLE_ADMIN }
+        - { path: therapeutic_area_edit, roles: ROLE_ADMIN }
+        - { path: therapeutic_area_list, roles: ROLE_ADMIN }

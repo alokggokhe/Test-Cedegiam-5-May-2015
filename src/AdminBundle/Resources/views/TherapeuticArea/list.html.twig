@@ -1,0 +1,22 @@
+{% if therapeutic_area is empty %}
+	<tr class="table-tr-even">
+		<td rowspan=2>
+			No therapeutical areas found
+		</td>
+	</tr>
+{% else %}
+	{% for therapeutic_area_row in therapeutic_area %} 
+		{% if loop.index is divisibleby(2) %}
+			<tr class="table-tr-odd">
+		{% else %}
+			<tr class="table-tr-even">
+		{% endif %}
+			<td>
+				{{ therapeutic_area_row.name }} 
+			</td>
+			<td class="text-center" title="Edit">
+				<span class="pull-right therapeutic_area_edit" therapeutic_area_id="{{ therapeutic_area_row.id }}" therapeutic_area_name="{{ therapeutic_area_row.name }}"><i class="fa fa-pencil cursor-pointer"></i></span>
+			</td>
+		</tr>
+	{% endfor %} 
+{% endif %}

@@ -1,0 +1,25 @@
+.header-bg-text {
+	background-color: #20519b;
+	background-image: none;
+	padding: 10px;
+}
+.first-text-header{
+	color: #FFFFFF;
+	font-size: 16pt;
+	font-family: "Helvetica Neue", "Helvetica Medium"
+}
+.second-text-header{
+	color: #FFFFFF;
+	font-size: 14pt;
+	font-family: "Helvetica Neue", "Helvetica Light"
+}
+.row-gap {
+	float: left;
+	height: 10px;
+	width: 100%;
+}
+.table-scrollable{
+	overflow: auto; 
+	position: absolute; 
+	height: 200px;
+}

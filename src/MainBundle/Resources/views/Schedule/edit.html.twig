@@ -1,0 +1,134 @@
+{% extends 'MainBundle::layout.html.twig' %}
+
+{% block title %}
+New Schedule | UCB Dandelion
+{% endblock %}
+
+{% block modulestylesheets %}
+<link href="{{ asset('bundles/main/css/schedule.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block modulejavascripts %}
+<script src="{{ asset('bundles/main/js/schedule.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+	<section id="panel">
+		<div class="panel schedule_form">
+			<div class="panel-form-first-part">
+				<a href="{{ path('logout') }}" id="logout">Log out</a>
+				<h1 class="panel-title-form"><b>Remote Patient Education Organizer</b></h1>
+			</div>
+			<div class="panel-form-second-part"></div>
+			{{ form_start(form) }}		
+			<div class="form-group">
+				<label for="schedule_title"{{ form_label(form.title) }}</label>
+				{{ form_errors(form.title) }}
+				{{ form_widget(form.title,  {attr:{'class':'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				<label>{{ form_label(form.scheduledatetime) }}</label>
+				{{ form_errors(form.scheduledatetime) }} 
+				{{ form_errors(form) }}             
+				<div class="input-group input-append date form_scheduledatetime" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+					{{ form_widget(form.scheduledatetime,  {attr:{'class':'form-control'}}) }}
+					<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+				</div>				
+			</div>
+			 <div class="form-group">
+				 <label for="schedule_phone">{{ form_label(form.phone) }}</label>
+				{{ form_errors(form.phone) }}
+				{{ form_widget(form.phone,  {attr:{'class':'form-control'}}) }}
+			</div>
+			<div class="form-group">
+				<label for="schedule_invite">Please provide the details of the person you would like to invite to this live session ?
+				</label>					
+			</div>
+			<div class="form-horizontal">
+				<div class="form-group">
+					{% if form_errors(form.firstname) is not empty %}
+						<div class="col-sm-3"></div>
+						<div class="col-sm-9">
+							<div class="col-sm-12">
+								{{ form_errors(form.firstname) }}
+							</div>	
+						</div>
+					{% endif %}	
+					<label for="lastname" class="col-sm-3 control-label">First name</label>
+					<div class="col-sm-8">
+						{{ form_widget(form.firstname, { attr: { 'class':'form-control' }}) }}
+					</div>
+				</div>
+				<div class="form-group">
+					{% if form_errors(form.lastname) is not empty %}
+						<div class="col-sm-3"></div>
+						<div class="col-sm-9">
+							<div class="col-sm-12">
+								{{ form_errors(form.lastname) }}
+							</div>	
+						</div>
+					{% endif %}	
+					<label for="lastname" class="col-sm-3 control-label">Last name</label>
+					<div class="col-sm-8">
+						{{ form_widget(form.lastname,  {attr:{'class':'form-control'}}) }}
+					</div>
+				</div>
+				<div class="form-group">
+					{% if form_errors(form.email) is not empty %}
+						<div class="col-sm-3"></div>
+						<div class="col-sm-9">
+							<div class="col-sm-12">
+								{{ form_errors(form.email) }}
+							</div>	
+						</div>
+					{% endif %}
+					<label for="lastname" class="col-sm-3 control-label">Email </label>
+					<div class="col-sm-8">
+						{{ form_widget(form.email,  {attr:{'class':'form-control'}}) }}
+					</div>
+				</div>
+			</div>
+			<div class="form-group form-sm-margin">
+				<label for="schedule_upload">To upload your PPT, please open the remote eDetailing platform by clicking <a href="{{ ucb_patient_action }}" title="eDetailing" target="_blank">here</a> and go to administrator/upload a documents</label>
+			</div>
+			<div class="row button-group">
+				<a href="{{ path('remote_patient_option') }}" title="Cancel">
+					<button type="button" class="btn btn-default">Cancel</button>
+				</a>
+				{{ form_widget(form.submit, {attr:{'formnovalidate':'formnovalidate','class':'btn btn-primary'}}) }}
+			</div>
+			{% if schedule is defined %}
+				<script type="text/javascript">
+					$(".form_scheduledatetime").datetimepicker({
+						format: 'yyyy-mm-dd hh:ii',
+						showMeridian: true,
+						autoclose: true,
+						todayBtn: true,
+						endDate: '+1y',
+						minuteStep: 30,
+						todayHighlight: true,
+						pickerPosition: "bottom-left"
+					});
+				</script>	
+			{% else %}      	
+				<script type="text/javascript">
+					$(".form_scheduledatetime").datetimepicker({
+						format: 'yyyy-mm-dd hh:ii',
+						showMeridian: true,
+						autoclose: true,
+						todayBtn: true,
+						startDate: new Date(),
+						endDate: '+1y',
+						minuteStep: 30,
+						todayHighlight: true,
+						pickerPosition: "bottom-left"
+					});
+				</script>
+			{% endif %}      	
+			{% do form.scheduledatetime.setRendered %}
+			{{ form_widget(form.owauuid,  {attr:{'value':app.user.uuid}}) }}
+			{{ form_widget(form.owaonekeycode,  {attr:{'value':app.user.onekeycode}}) }}
+			{{ form_end(form) }}
+		</div>
+	</section>
+{% endblock %}

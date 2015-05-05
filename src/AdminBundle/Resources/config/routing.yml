@@ -1,0 +1,50 @@
+_security_login:
+    pattern: /
+    defaults: { _controller: AdminBundle:Index:index }
+
+_security_check:
+    pattern: /login_check
+
+_security_logout:
+    pattern: /logout
+
+msl:
+    path:   /msl
+    defaults: { _controller: AdminBundle:Msl:index}
+
+msl_add:
+    path:   /msl_add
+    defaults: { _controller: AdminBundle:Msl:add}
+
+msl_edit:
+    path:   /msl_edit
+    defaults: { _controller: AdminBundle:Msl:edit}
+
+msl_list:
+    path:   /msl_list
+    defaults: { _controller: AdminBundle:Msl:getList}
+
+msl_get:
+    path:   /msl_get
+    defaults: { _controller: AdminBundle:Msl:getMslDetails}
+
+msl_delete:
+    path:   /msl_delete
+    defaults: { _controller: AdminBundle:Msl:deleteMsl}
+
+therapeutic_area_user:
+    pattern:  /therapeutic_area_user
+    defaults: { _controller: AdminBundle:TherapeuticArea:index}
+
+therapeutic_area_add:
+    path:   /therapeutic_area_add
+    defaults: { _controller: AdminBundle:TherapeuticArea:add}
+
+therapeutic_area_edit:
+    path:   /therapeutic_area_edit
+    defaults: { _controller: AdminBundle:TherapeuticArea:edit}
+
+therapeutic_area_list:
+    path:   /therapeutic_area_list
+    defaults: { _controller: AdminBundle:TherapeuticArea:getList}
+

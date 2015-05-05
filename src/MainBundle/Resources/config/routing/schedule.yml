@@ -1,0 +1,20 @@
+schedule_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:Schedule:add" }
+
+schedule_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainBundle:Schedule:edit" }
+
+schedule_list:
+    path:   /schedule_list
+    defaults: { _controller: MainBundle:Schedule:list}
+
+schedule_confirm:
+    path:   /schedule_confirm/{id}
+    defaults: { _controller: MainBundle:Schedule:scheduleConfirm}
+
+schedule_delete:
+    path:     /delete
+    defaults: { _controller: "MainBundle:Schedule:delete" }
+    methods:  [POST, DELETE]

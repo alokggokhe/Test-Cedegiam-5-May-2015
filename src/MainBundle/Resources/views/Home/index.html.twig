@@ -1,0 +1,61 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block content %}
+    <section id="panel">
+        <div class="panel">
+
+            <div class="panel-form-first-part full">
+                <h1 class="panel-title-form title-login">Welcome to <strong>Dandelion</strong></h1>
+                <a href="https://webinar.ucbdandelion.com/admin/" class="btn btn-info btn-lg" target="_blank" role="button">I am hosting a webinar</a> 
+                <a href="https://visit.ucbdandelion.com/admin/" class="btn btn-info btn-lg" target="_blank" role="button">I am hosting a 1:1</a>
+            </div>
+
+            <div class="panel-form-second-part">
+                <h2 class="title-login">Please <strong>Log In</strong></h2>
+
+                
+                <form role="form" method="post" action="{{action}}">
+                    <input type="hidden" name="service" value="{{service}}" />
+                    <input type="hidden" name="_flowId" value="loginext-webflow">
+                    <input type="hidden" name="errorRedirectUrl" value="{{error_redirection}}"> 
+                    {% if(display_error) %}
+                    <div class="alert alert-danger">
+                        Invalid email or password
+                    </div>
+                    {% endif %}
+                    {% if app.session.getFlashBag.has('success')  %}
+                    <div class="alert alert-success">
+                        {{ app.session.getFlashBag.get('success')[0] }}
+                    </div>
+                    {% endif %}
+
+                    <div class="form-group input-group">
+
+                        <span class="input-group-addon" id="user-id"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAArlBMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMAAABErtPcAAAAOHRSTlMASLDn6LVQeoRBTr/NA+36DO77DcLQVomSVcDsxFwJCho9XXNePxssf8j8zIMyEp+kGRzlJdHh8iA6H5cAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAiklEQVQY043O1xKCQAyF4YNdUXHBil0s2Auoef8nc4Y1s7usF/6X32SSADKnUCyVKzCqUlZNtzp9a2joMjaVtdqMXkehYPQDNdpl7Gk7Hca+fn4gbWg+OgrHYjJFvtkc/7RYrqJovdkq2cV7Xx46HE/njC5XMrrdgUdCuUSKkKye8Gwk0C98va2SD2lYK+UAxSlSAAAAAElFTkSuQmCC" /></span>
+                        <input name="login" type="text" class="form-control input-lg" placeholder="User Id" aria-describedby="user-id">
+                    </div>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" id="password"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAXCAMAAAAx3e/WAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAzFBMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMAAAC85VE4AAAAQnRSTlMASqjs7atOmJ90kDUzjIAOZFsVUNPIXWihlUuZi1kWT5fFUlO9GSvz9jSkqrGpwDK56uXWyv1C/J6ctnN+kuHn5gOG1yK0AAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAKJJREFUGNN9zkcWgkAQRdECRcGcs4IYEcwZFfDvf1FKMHQPeJOqcwfVTRQkiImklKK/0giSf6IAmWwuDxQ+UgRK/iwDlYiqqIVLHY2ImmiFSxtKRB10w6WHfjAHqoahPnqnjyGrE6LpDExzgxbgMsniySKRp2UMrYz1hqWt/50dQ3ufDgwdBaLTmTt/uca9aPIkkc2TTTee7kQPx/W+uY72fAGxJka9z39U3AAAAABJRU5ErkJggg==" /></span>
+                        <input name="password" type="password" class="form-control input-lg" placeholder="Password" aria-describedby="user-id">
+                    </div>
+                    <div class="button-group">
+                       
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 user-links no-pad">
+                            <a href="{{path('forgotten_password')}}" title="Lost password?">Lost password?</a><br />
+                            <a href="{{register}}" title="Register a account" target="_blank">Register a account</a>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 button-group text-right no-pad">
+                        <button type="submit" class="btn btn-primary btn-lg">Enter</button>
+                    </div>
+
+                    </div>
+                </form>
+
+                </a>
+            </div>
+
+            <div class="row footer">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><a href="https://visit.ucbdandelion.com/custom/img/150112_Legal%20Policy_UCBDandelion.pdf" title="Privacy Policy" target="_blank">Privacy Policy</a></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,16 @@
+main:
+    resource: "@MainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+login:
+    pattern:   /
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout

@@ -1,0 +1,97 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block content %}
+
+	<section id="panel">
+		<div class="panel">
+			<div class="panel-form-first-part">
+				<a href="{{ path('logout') }}" id="logout">Log out</a>
+				<h1 class="panel-title-form">You have requested a Medical Inquiry call back<br /> from a UCB Medical Specialist. </h1>
+			</div>
+			<div class="panel-form-second-part">
+				<h2><strong>MedInquiry form</strong></h2>
+				<h3>Please fill out this form</h3>
+			</div>
+            {{ form_start(form) }}
+				<div class="form-group">
+                    {#{{ form_errors(form) }}#}
+                    <label>Topic/Therapeutic area concerned by your question:</label>
+					{{ form_errors(form.topics) }}
+					<div class="group-checkbox">
+                        {% for topic in form.topics%}
+                            <div class="checkbox">
+                            	<label class="radio-inline">{{ form_widget(topic) }} {{topic.vars.label}}</label>
+                        	</div>
+                        {% endfor %}
+                        
+					</div>
+				</div>
+                <div class="form-group">
+                    <label for="invitation_question">Please indicate the question(s) you would like covered during this presentation:</label>
+                    {{ form_errors(form.question) }}
+                    {{ form_widget(form.question,  {attr:{'class':'form-control'}}) }}
+
+                </div>
+                <div class="form-group">
+                	{{ form_errors(form.relatedToAE) }}
+                    {{ form_widget(form.relatedToAE) }}
+                	<label for="invitation_relatedToAE">This query relates to an AE in one of my patients</label>
+                </div>
+				<div class="form-group">
+					<label>When would you like a UCB MSL to call you?</label>
+					<div class="radio">
+						{{ form_errors(form.availabilityDetails) }}
+                        {% for choiceAvailability in form.availabilityDetails %}
+                            <label class="radio-inline">
+                            {{ form_widget(choiceAvailability) }}
+                            {{choiceAvailability.vars.label}}</label>
+                        {% endfor %}
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Please indicate what Date and Time</label>
+                    {{ form_errors(form.datetime) }}
+                    <div class="input-group input-append date form_datetime" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+						<input id="invitation_datetime" type="text" class="form-control" readonly name="invitation[datetime]">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					</div>
+
+					<script type="text/javascript">
+						$(".form_datetime").datetimepicker({
+                            format: 'yyyy-mm-dd hh:ii',
+                            showMeridian: true,
+							autoclose: true,
+							todayBtn: true,
+							startDate: new Date(),
+							endDate: '+1y',
+							minuteStep: 30,
+							todayHighlight: true,
+							pickerPosition: "bottom-left"
+						});
+					</script>
+				</div>
+				<div class="form-group">
+                    <label for="invitation_name">Name:</label>
+					{{ form_errors(form.name) }}
+                    {{ form_widget(form.name,  {attr:{'class':'form-control', 'value': user ? user.Username()}}) }}
+				</div>
+				<div class="form-group">
+                    <label for="invitation_phone">Phone number you wish to be called:</label>
+					{{ form_errors(form.phone) }}
+                    {{ form_widget(form.phone,  {attr:{'class':'form-control', 'value' : user ? user.ProfessionalPhone() }}) }}
+				</div>
+				<div class="form-group">
+                    <label for="invitation_email">Email address to receive your appointment confirmation:</label>
+					{{ form_errors(form.email) }}
+                    {{ form_widget(form.email,  {attr:{'class':'form-control', 'value' : user ? user.Email()}}) }}
+				</div>
+				<div class="row button-group">
+                    {{ form_widget(form.submit, {attr:{'formnovalidate':'formnovalidate','class':'btn btn-primary btn-lg col-lg-3 col-lg-offset-6 col-lg-push-3 col-md-3 col-md-offset-6 col-md-push-3 col-sm-3 col-sm-offset-6 col-sm-push-3 btn-submit'}}) }}
+                    <button type="button" class="btn btn-default btn-lg col-lg-3 col-lg-pull-3 col-md-3 col-sm-pull-3 col-md-3 col-sm-pull-3" onclick="window.history.go(-1); return false;">Cancel</button>
+				</div>
+
+            {% do form.datetime.setRendered %}
+
+            {{ form_end(form) }}
+		</div>
+	</section>
+{% endblock %}

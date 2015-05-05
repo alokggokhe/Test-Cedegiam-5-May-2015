@@ -1,0 +1,2 @@
+INSERT INTO `user` (`id`, `firstName`, `lastName`, `email`, `username`, `password`, `expirationDate`) VALUES
+(1, 'UCBF', 'UCBL', 'ucb@ucb.com', 'ucb@ucb.com', '85e146fa71ff6c2beaeff0fdf67b1a3a065072e5ad4364f52e02fd97eac87dea4c662e385f7d163ecb712d556a5e02c67b41f70571063490eb7ec1b6de50021a', '2016-04-14');

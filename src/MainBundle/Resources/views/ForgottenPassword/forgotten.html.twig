@@ -1,0 +1,44 @@
+{% extends 'MainBundle::layout.html.twig' %}
+{% block content %}
+    <section id="panel">
+        <div class="panel">
+
+            <div class="panel-form-first-part full">
+                <h1 class="panel-title-form">You have lost your <strong>password</strong>?</h1>
+                
+            </div>
+
+            <div class="panel-form-second-part forgotten">
+                <p>We can send you a link to reset your<br /> password</p>
+                
+                <form role="form" method="post" action="{{action}}">
+                    {% set error = false %}
+
+                    {% if app.session.getFlashBag.has('error')  %}
+                        {% set error = true %}
+                    <div class="alert alert-danger">
+                        {{ app.session.getFlashBag.get('error')[0] }}
+                    </div>
+                    {% endif %}
+
+                   <div><label>Please enter your email address:</label></div>
+                        
+                    <div class="form-group input-group">
+                        <span class="input-group-addon" id="email"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAUCAMAAACknt2MAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA21BMVEUAAAAzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMAAABl0QiVAAAAR3RSTlMAaNnu7dxyUV2f6s7R5aKX52b7cdiZlPohrLMp75b+qR1Y4ehhFaD993AEkAtn8cYzN8zUPivAjoOKhd1US9YOCOyYZHXygOZvM8EAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAsUlEQVQoz7XJaVsBURyG8TtTlsRYsrQRw9iiEC1Uijzf/xuZC3Np6Lz0vDjX+d8/OAlZ1un+rLMwRGRYlJjO44f9IqEktlKkM3uS5VI58ipA8eovXN/Are48KpXvoVL1walB3W2sSWq2oN3ZSO4Buj3vsyHp8Qn6A2n4DKPxOvkkvQCvb97zvg070mTqdT4+dUhS+Wvm7q4A6duRiQI7Atkm+sE1UZKKieawSPz+s9SSFVA/cxWI280lAAAAAElFTkSuQmCC" /></span>
+                        <input name="email" type="text" class="form-control input-lg{{ error and email|length ? ' error'}}" placeholder="Email address" aria-describedby="email" value="{{email}}">
+                    </div>
+                    
+                    <div class="row button-group text-right">
+                        <a class="btn btn-default btn-lg" href="{{path('homepage')}}">CANCEL</a>
+                        <button type="submit" class="btn btn-primary btn-lg btn-submit">Enter</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="row footer">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><a href="https://visit.ucbdandelion.com/custom/img/150112_Legal%20Policy_UCBDandelion.pdf" title="Privacy Policy" target="_blank">Privacy Policy</a></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

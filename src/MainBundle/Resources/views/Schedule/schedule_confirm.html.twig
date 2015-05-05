@@ -1,0 +1,32 @@
+{% extends 'MainBundle::layout.html.twig' %}
+
+{% block title %}
+Schedule Confirm | UCB Dandelion
+{% endblock %}
+
+{% block content %}
+	<section id="panel">
+		<div class="panel">
+			<div class="panel-first-part">
+				<h1 class="panel-title-form title-confirm">Thank you <b>Dr. {{ app.user.getUsername()|capitalize }}</b></h1>
+			</div>
+			<div class="panel-second-part">
+				<h2><b>Confirmation for your session</b></h2>
+				<p>An email has been sent to you and to {{firstname}} {{lastname}} , confirming your invitation to the remote presentation you will be delivering on {{date}} at {{time}}, along with all necessary instructions how to connect.</p>
+				{% if phone is not empty %}
+					<p>The phone number you have provided was {{phone}}.</p> 
+				{% else %}
+					<p>You have not provided a phone number for {{firstname}} {{lastname}} to call you and may therefore have made a different arrangement.</p>
+				{% endif %}
+				<p>If any of the above details need to be changed or corrected, please feel free to go to the <a href="{{ path('schedule_list') }}" title="">‘I need to manage the patient education sessions I have scheduled’</a> section of your Dandelion portal. </p>
+				<p>Any changes or alterations you might make there (including cancellation, if so needed) would instantly result in the necessary email updates to {{firstname}} {{lastname}}.</p>
+				<p>We hope you have a great presentation and wish you a very good rest of your day.</p>
+				<div class="row button-group text-center">
+					<a href="{{ path('homepage') }}" title="Return to your Dandelion Home Page">
+						<button class="btn btn-default button-text" type="button">Return to your Dandelion Home Page</button>
+                    </a>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

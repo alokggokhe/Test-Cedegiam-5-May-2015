@@ -1,0 +1,18 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+    #relatedAE_email: ~
+
+services:
+    msl_mailer:
+        class:  MainBundle\Services\Mailer\MslMailer
+        arguments: ["@doctrine.orm.entity_manager", "@templating", "@mailer"]
+    hcp_mailer:
+        class: MainBundle\Services\Mailer\HcpMailer
+        arguments: ["@doctrine.orm.entity_manager", "@templating", "@mailer", "%relatedAE_email%"]
+    hcp_patient_confirmation_mailer:
+        class: MainBundle\Services\Mailer\HcpPatientConfirmationMailer
+        arguments: ["@doctrine.orm.entity_manager", "@templating", "@mailer"]
+    hcp_confirmation_mailer:
+        class: MainBundle\Services\Mailer\HcpConfirmationMailer
+        arguments: ["@doctrine.orm.entity_manager", "@templating", "@mailer"]

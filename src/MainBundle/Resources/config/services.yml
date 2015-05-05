@@ -1,0 +1,9 @@
+services:
+    main.form.type.invitation:
+        class: MainBundle\Form\Type\InvitationType
+        tags:
+            - { name: form.type, alias: invitation }
+    main.form.type.schedule:
+        class: MainBundle\Form\Type\ScheduleType
+        tags:
+            - { name: form.type, alias: schedule }

@@ -1,0 +1,160 @@
+/* Background color*/
+.body{
+	font-family: "Helvetica Neue","Helvetica Regular";
+}
+
+.background-color-white{
+	background-color: #FFFFFF;
+}
+
+/* Bootstrap button */
+.btn-standard{
+	background-color: #46b29b !important;
+}
+
+/* Button */
+.common-button, .common-button:hover {
+	background-color: #46b29b !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue", "Helvetica Regular";
+	text-transform: uppercase;
+	border: #46b29b !important;
+	cursor: pointer;
+}
+.delete-button{
+	background-color: #ca2222 !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+
+.save-button{
+	background-color: #46b29b !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+
+.close-button{
+	background-color: #46b29b !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: normal;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+
+/* Padding */
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+} 
+.padding-left-25px {
+	padding-left: 25px !important;
+}
+.padding-right-0px {
+	padding-right: 0px !important;
+}
+.padding-top-7px {
+	padding-top: 7px;
+}
+.padding-top-10px {
+	padding-top: 10px;
+}
+.padding-bottom-10px {
+	padding-bottom: 10px;
+}
+
+/* Common CSS */
+.logo-padding-bottom {
+	padding-bottom: 20pt;    
+}
+
+/* Width */
+.width-100-per{
+	width: 100%;
+}
+
+/* Color */
+.icon-white-color {
+	color: #FFFFFF;
+}
+
+/* Table */
+.no-scroll-table{
+	width: 100%; 
+	float: left;
+	border: 1px solid #46b29b;
+}
+.scroll-table{
+	width: 100%; 
+	overflow-x: hidden; 
+	overflow-y: scroll; 
+	height: 200px;
+	border: 1px solid #46b29b;
+}
+.table-tr-even {
+	background-color: #FFFFFF !important;
+    font-family: "Helvetica Neue","Helvetica Regular";
+    font-weight: bold;
+}
+.table-tr-odd {
+	background-color: #daf0eb !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+    font-weight: bold;
+}
+
+/* Cursor */
+.cursor-pointer{
+	cursor: pointer;
+}
+
+/* boostrap popup */
+.modal-title-header{
+	color: #333333 !important;
+	font-size: 18pt !important;
+	font-family: "Helvetica Neue";
+	font-weight: bold;
+}
+
+.modal-title-body-label{
+	color: #333333 !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: bold;
+}
+.modal-body-label{
+	color: #333333 !important;
+	font-size: 10pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: bold;
+}
+
+/* checkbox */
+.text-checkbox{
+	color: #333333 !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: normal;
+}
+
+/* Login text */
+.login-welcom-text{
+	color: #333333 !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: bold;
+}
+.logout-text{
+	color: #20519b !important;
+	font-size: 14pt !important;
+	font-family: "Helvetica Neue","Helvetica Regular";
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+

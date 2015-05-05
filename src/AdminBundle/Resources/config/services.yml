@@ -1,0 +1,26 @@
+services:
+    adminbundle.twig.adminbundle_extension:
+       class: AdminBundle\Twig\AdminbundleExtension
+       tags:
+           - { name: twig.extension }
+    admin.form.type.admin_login:
+        class: AdminBundle\Form\Type\AdminLoginType
+        tags:
+        - { name: form.type, alias: admin_login }
+    admin.form.type.edit_msl:
+        class: AdminBundle\Form\Type\EditMslType
+        tags:
+        - { name: form.type, alias: edit_msl }
+    admin.security.user.admin_user_provider:
+        class: AdminBundle\Security\User\AdminUserProvider
+        arguments: ['@admin_password.user_repository']
+    admin_password.user_repository:
+        class:  AdminBundle\Entity\UserRepository
+        factory_service: 'doctrine.orm.default_entity_manager'
+        factory_method:  'getRepository'
+        arguments:  
+         - 'AdminBundle\Entity\User'
+    admin.security.logout_success_handler:
+        class: AdminBundle\Security\Handler\LogoutSuccessHandler
+        arguments: [@router]
+

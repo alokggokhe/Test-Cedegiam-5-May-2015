@@ -1,0 +1,43 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+Login | Dandelion
+{% endblock %}
+
+{% block modulestylesheets %}
+<link href="{{ asset('bundles/admin/css/login.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		<section id="panel">
+			<div class="panel">
+				<div class="panel-form-first-part"></div>
+				<div class="panel-form-second-part">
+					<h2 class="title-login">Please enter your username & password to enter the administration tool.</h2>
+					{% if error %}
+						<div class="login-alert-msg">
+							<div class="alert alert-warning modal-body-label">
+								<a aria-hidden="true" data-dismiss="alert" href="#" class="close"></a>
+								<span class="response logn-response-msg">{{error.message}}</span>
+							</div>
+						</div>
+					{% endif %}
+					{{ form_start(form, {'action': path('_security_check'),'attr': {'novalidate': 'novalidate','method': 'POST','role': 'form','id': 'admin_login'}}) }}
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+							{{ form_widget(form.username, {'full_name': '_username','id': 'username', 'value': last_username, attr:{'class':'form-control input-lg', 'placeholder': 'Username', 'maxlength': '32'}}) }}
+						</div>
+						<div class="form-group input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+							{{ form_widget(form.password, {'full_name': '_password','id': 'password',attr:{'class':'form-control input-lg', 'placeholder': 'Password', 'maxlength': '32'}}) }}
+						</div>
+						<div class="button-group text-right" title="CONNECT">
+							{{ form_widget(form.save, {attr:{'class':'btn btn-primary btn-lg common-button'}}) }}
+						</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</section>
+	</div>	
+{% endblock %}

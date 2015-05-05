@@ -1,0 +1,58 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}, {'action': '', 'method': 'POST', 'name': 'frm_edit_msl', 'id': 'frm_edit_msl','role': 'form'}) }}
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+				<span class="required-field">*</span>
+				<label class="control-label modal-title-body-label">{{ form_label(form.firstName) }}</label>
+				{{ form_widget(form.firstName,  {attr:{'class':'form-control input-lg', 'placeholder': 'First Name', 'maxlength': '32'}}) }}
+		</div>
+		<div class="col-xs-12 col-md-4">
+				<span class="required-field">*</span>
+				<label class="control-label modal-title-body-label">{{ form_label(form.lastName) }}</label>
+				{{ form_widget(form.lastName,  {attr:{'class':'form-control input-lg', 'placeholder': 'Last Name', 'maxlength': '32'}}) }}
+		</div>
+		<div class="col-xs-12 col-md-4">
+				<span class="required-field">*</span>	
+				<label class="control-label modal-title-body-label">{{ form_label(form.email) }}</label>
+				{{ form_widget(form.email,  {attr:{'class':'form-control input-lg', 'placeholder': 'Email', 'maxlength': '32'}}) }}
+		</div>
+	</div>
+	<div class="row-gap"></div>
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+				<span class="required-field">*</span>
+				<label class="control-label modal-title-body-label">{{ form_label(form.gender) }}</label>
+				{{ form_widget(form.gender,  {attr:{'class':'form-control'}}) }}
+		</div>
+		<div class="col-xs-12 col-md-4">
+				<span class="required-field">*</span>	
+				<label class="control-label modal-title-body-label">{{ form_label(form.role) }}</label>
+				{{ form_widget(form.role,  {attr:{'class':'form-control'}}) }}
+		</div>
+		<div class="col-xs-6 padding-right-0px">
+		</div>
+	</div>
+	<div class="row-gap"></div>
+	<label class="control-label modal-title-body-label">{{ form_label(form.mslTerritory) }}</label>
+	<div class="row">
+		<div class="col-xs-12 col-md-4">
+			{{ form_widget(form.mslTerritory, {attr:{'class':'form-control input-lg', 'placeholder': 'User Territories', 'maxlength': '64'}}) }}
+		</div>
+		<div class="col-xs-6">
+		</div>
+	</div>
+
+	<div class="row-gap"></div>
+	<label class="control-label modal-title-body-label">Therapeutical Areas Assigning</label>
+	<div class="row">
+		<div class="col-xs-12">
+			{% for therapeutic_area_row in therapeutic_area %} 
+				<div class="col-xs-12 col-md-3">
+					<label class="checkbox-inline">
+						<input type="checkbox" name="chk_therapeutic_area[]" value="{{therapeutic_area_row.id}}" {% if a_user_therapeutic_area | checkinarray(therapeutic_area_row.id) %} checked {% endif %}> <label class="text-checkbox">{{therapeutic_area_row.name}}</label>
+					</label>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<input type="hidden" name="hid_msl_id" id="hid_msl_id" value="{{ msl.id() }}">
+{{ form_end(form) }}

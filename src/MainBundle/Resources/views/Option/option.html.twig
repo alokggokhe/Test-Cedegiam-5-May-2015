@@ -1,0 +1,74 @@
+{% extends 'MainBundle::layout.html.twig' %}
+
+{% block title %}
+Option | UCB Dandelion
+{% endblock %}
+
+{% block content %}
+    <section id="panel">
+        <div class="panel">
+
+            <div class="panel-form-first-part">
+                <a href="{{ path('logout') }}" id="logout">Log out</a>
+                <h1 class="panel-title-form">Welcome back to your personal<br /> Dandelion Space, <strong>Dr. {{name}}</strong></h1>
+            </div>
+
+            <nav class="panel-form-second-part">
+                <h2 class="title-option"><strong>Option page</strong></h2>
+                <h3>Please select a service we can help you with.</h3>
+                <a href="{{ path('invitation') }}" title="" class="">
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_receiveinfo.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                <strong>I would like</strong> to receive 1:1 Medical Information From  A UCB Medical Specialist
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+                <a href="https://visit.ucbdandelion.com/index2.php{{webinar_params}}" title="Visit - UCB Dandelion">
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_11_now.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+                                <strong>I have an appointment</strong> for a 1:1 remote presentation <strong>now</strong>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="{{ path('remote_patient_option') }}" title="Patient Education" class="">
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_calendar.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                <strong>I need to set/manage/host patient education sessions</strong>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://webinar.ucbdandelion.com/index2.php{{webinar_params}}" title="Webinar - UCB Dandelion">
+                    <div class="block-button">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <img src="{{ asset('bundles/main/images/option_webinar_now.png') }}" />
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+                                <strong>I have an appointment</strong> For a Webinar Presentation <strong>now</strong>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </nav>
+            <div class="row footer">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><a href="https://visit.ucbdandelion.com/custom/img/150112_Legal%20Policy_UCBDandelion.pdf" title="Privacy Policy" target="_blank">Privacy Policy</a></div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

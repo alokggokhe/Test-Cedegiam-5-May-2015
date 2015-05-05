@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% block head %}
+<!-- En-tête du document  -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<!-- Balise meta  -->
+<meta name="title" content="Dandelion">
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Indexer et suivre -->
+<meta name="robots" content="index,follow"/>
+
+<!-- IE Compatibility modes -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Viewport -->
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="{{ asset('bundles/main/images/favicon.png') }}" />
+<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/main/images/favicon.ico') }}" /><![endif]-->
+
+<!--  Relier une feuille CSS externe  -->
+<link type="text/css" rel="stylesheet" href="{{ asset('bundles/main/css/main.css') }}" />
+<link type="text/css" rel="stylesheet" href="{{ asset('bundles/main/css/bootstrap-datetimepicker.css') }}" />
+<link href="{{ asset('bundles/main/css/common.min.css') }}" type="text/css" rel="stylesheet" />
+{% block modulestylesheets %}
+{% endblock %}
+
+<!-- Relier un fichier JavaScript  -->
+<script type="text/javascript" src="{{ asset('bundles/main/js/jquery/jquery-1.8.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/main/js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/main/js/bootstrap-datetimepicker.js') }}"></script>
+{% block modulejavascripts %}
+{% endblock %}
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="{{ asset('bundles/main/js/html5shiv.js') }}"></script>
+<script src="{{ asset('bundles/main/js/respond.min.js') }}"></script>
+<![endif]-->
+
+<title>{% block title %}{% endblock %}</title> 
+{% endblock %}
+{% block body %}
+<body class="{{ app.request.attributes.get('_route') }}">
+	<div class="container">
+		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+			<header>
+				<a href="{{ path('homepage') }}" title="">
+					<img src="{{ asset('bundles/main/images/ucb_logo.jpg') }}" alt=""/>
+				</a>
+			</header>
+
+			{% block content %}{% endblock %}
+
+		</div>
+	</div>
+
+	<!-- Commoc alert popup -->
+	<div class="modal fade bs-example-modal-sm" id="popupCommonAlert" tabindex="-1" role="dialog" aria-labelledby="popupCommonAlertModelLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title modal-title-body-label" id="popupCommonAlertModelLabel">Alert</h4>
+				</div>
+				<div class="modal-body">            
+					<div class="alert-message modal-body-label"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-standard close-button" data-dismiss="modal" title="Close">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Common Delete popup -->
+	<div class="modal fade bs-example-modal-sm" id="popupCommonDelete" tabindex="-1" role="dialog" aria-labelledby="popupCommonDeleteModelLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title modal-title-body-label" id="popupCommonDeleteModelLabel">Delete</h4>
+				</div>
+				<div class="modal-body">            
+					<div class="delete-message modal-body-label"></div>
+					<input type="hidden" name="entity_delete_id" id="entity_delete_id" value="">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-standard delete_schedule save-button" title="Yes">Yes</button>
+					<button type="button" class="btn btn-standard close-button" data-dismiss="modal" title="No">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}

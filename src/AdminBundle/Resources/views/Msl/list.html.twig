@@ -1,0 +1,28 @@
+{% if msl is empty %}
+	<tr class="table-tr-even">
+		<td rowspan=2>
+			No users found
+		</td>
+	</tr>
+{% else %}
+	{% for msl_row in msl %} 
+		{% if loop.index is divisibleby(2) %}
+			<tr class="table-tr-odd">
+		{% else %}
+			<tr class="table-tr-even">
+		{% endif %}
+			<td>
+				{{ msl_row.firstName }} {{ msl_row.lastName }}  
+			</td>
+			<td>
+				{{ msl_row.email }} 
+			</td>
+			<td>
+				{{ msl_row.mslTerritory }} 
+			</td>
+			<td class="text-center" title="Edit">
+				<span class="pull-right msl_edit" msl_id="{{ msl_row.id }}"><i class="fa fa-pencil cursor-pointer"></i></span>
+			</td>
+		</tr>
+	{% endfor %} 
+{% endif %}

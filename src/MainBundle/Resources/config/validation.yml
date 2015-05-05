@@ -1,0 +1,56 @@
+MainBundle\Entity\Invitation:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 50
+        email:
+            - NotBlank: ~
+            - Email :
+                checkMX: true
+        phone :
+            - NotNull: ~
+            - Length:
+                min: 8
+                max: 20
+            - Regex:
+                pattern: "/\d/"
+                message: Your phone number should contain numbers only
+        topics :
+            - NotNull: ~
+        availabilityDetails:
+            - NotNull: ~
+        question:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 400
+MainBundle\Entity\Schedule:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [owauuid, owaonekeycode, scheduledatetime]
+            message: "Appointment is aready exists for this date time" 
+    properties:
+        title:
+            - NotBlank: { message: "Title can not be empty" }
+        firstname:
+            - NotBlank: { message: "First name can not be empty" }
+        lastname:
+            - NotBlank: { message: "Last Name can not be empty" }
+        phone:
+            # - NotNull: ~
+            - Length:
+                min: 8
+                max: 16
+            - Regex:
+                pattern: "/\d/"
+                message: Your phone number should contain numbers only
+        scheduledatetime:
+            - NotBlank: { message: "Schedule date time for appointment" }
+        email:
+            - NotBlank: { message: "Email can not be empty" }
+            - Email :
+                checkMX: true
+                message: Email address is not valid
+

@@ -1,0 +1,19 @@
+{% extends 'MainBundle::layout.html.twig' %}
+
+{% block content %}
+	<section id="panel">
+		<div class="panel">
+			<div class="panel-first-part">
+				<a href="{{ path('logout') }}" id="logout">Log out</a>
+				<h1 class="panel-title-form title-confirm">Thank you <strong>Dr. {{ name|capitalize }}</strong></h1>
+			</div>
+			<div class="panel-second-part">
+				<h2><strong>Confirmation for your call</strong></h2>
+				<p>A confirmation email has been sent across to you at the email address you provided with all details about this appointment along with a calendar invite for your conference.</p>
+				<p>At the date and time of the appointment, a UCB Medical Specialist will call you on the phone number you have specified and will ask you to join into a web presentation he/she will be conducting.</p>
+				<p>You will simply need to click the link in the invite and enter the secured access code that he/she will be providing to you over the phone.</p>
+				<p>We hope the presentation is helpful and wish you a great rest of your day. You can now close this window. </p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

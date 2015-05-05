@@ -1,0 +1,26 @@
+AdminBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank: { message: "Username can not be empty" }
+        password:
+            - NotBlank: { message: "Password can not be empty" }
+MainBundle\Entity\TherapeuticArea:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: { fields: name, message: "This therapeutic area is already exists" }
+    properties:
+        name:
+            - NotBlank: { message: "Please enter the therapeutic area name" }
+MainBundle\Entity\Msl:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: { fields: email, message: "This email is already exists" }
+    properties:
+        firstName:
+            - NotBlank: { message: "First name can not be empty" }
+        lastName:
+            - NotBlank: { message: "Last Name can not be empty" }
+        email:
+            - NotBlank: { message: "Email can not be empty" }
+            - Email :
+                checkMX: true
+                message: Email address is not valid
+
