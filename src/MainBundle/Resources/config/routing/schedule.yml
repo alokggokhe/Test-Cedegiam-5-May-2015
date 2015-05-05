@@ -18,4 +18,3 @@ schedule_delete:
     path:     /delete
     defaults: { _controller: "MainBundle:Schedule:delete" }
     methods:  [POST, DELETE]
-    

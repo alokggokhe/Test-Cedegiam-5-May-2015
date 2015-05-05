@@ -37,4 +37,3 @@ terms_of_use:
 forgotten_password:
     path:   /forgotten_password
     defaults: { _controller: MainBundle:ForgottenPassword:index}
-    
