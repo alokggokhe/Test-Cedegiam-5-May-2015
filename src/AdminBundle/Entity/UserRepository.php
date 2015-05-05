@@ -2,8 +2,6 @@
 
 namespace AdminBundle\Entity;
 
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository

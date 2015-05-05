@@ -13,4 +13,4 @@ class ConfirmController extends  Controller
     {
         return $this->render('MainBundle:Confirm:confirm.html.twig',array('name'=>$request->get('name')));
     }
-} 
+}

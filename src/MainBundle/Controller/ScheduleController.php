@@ -89,7 +89,7 @@ class ScheduleController extends Controller
 		));
 	}
 
-	public function sendMail($schedule_id)
+	private function sendMail($schedule_id)
 	{
 		$owauser = '';
 		if($this->get('security.context')->getToken()->getUser() instanceof OwaUser){
