@@ -16,3 +16,4 @@ services:
     hcp_confirmation_mailer:
         class: MainBundle\Services\Mailer\HcpConfirmationMailer
         arguments: ["@doctrine.orm.entity_manager", "@templating", "@mailer"]
+        

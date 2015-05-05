@@ -7,3 +7,4 @@ services:
         class: MainBundle\Form\Type\ScheduleType
         tags:
             - { name: form.type, alias: schedule }
+            
